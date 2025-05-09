@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="Ukraine">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apple та їх інноваційні пристрої</title>
+    <meta
+      name="description"
+      content="Apple Inc. - світовий лідер у виробництві інноваційних пристроїв. Дізнайтесь про історію компанії, iPhone, iPad, MacBook та інші продукти."
+    />
+    <meta
+      name="keywords"
+      content="Apple, iPhone, iPad, MacBook, iMac, Apple Watch, AirPods, технології, гаджети"
+    />
+    <meta
+      name="description"
+      lang="en"
+      content="Apple Inc. - world leader in innovative devices. Learn about company history, iPhone, iPad, MacBook and other products."
+    />
+    <meta
+      name="keywords"
+      lang="en"
+      content="Apple, iPhone, iPad, MacBook, iMac, Apple Watch, AirPods, technology, gadgets"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="./style/index.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img
+          class="logoPic"
+          src="./media/logo-apple-1998.png"
+          alt="apple logo"
+          height="50px"
+          width="100px"
+        />
+        <h2>Apple</h2>
+      </div>
+    </header>
+    <main>
+      <ul class="menu">
+        <li>
+          <a href="./Iphone.html"
+            ><img
+              class="menu-img"
+              src="./media/iphone-menu.png"
+              alt="Iphone"
+              width="auto"
+              height="80px"
+          /></a>
+        </li>
+        <li>
+          <a href="./MacBook.html"
+            ><img
+              class="menu-img"
+              src="./media/mac-menu.png"
+              alt="macbook"
+              width="auto"
+              height="80px"
+          /></a>
+        </li>
+        <li>
+          <a href="./Ipad.html"
+            ><img
+              class="menu-img"
+              src="./media/ipad-menu.png"
+              alt="macbook"
+              width="auto"
+              height="80px"
+          /></a>
+        </li>
+        <li>
+          <a href="./IMac.html"
+            ><img
+              class="menu-img"
+              src="./media/iMac-menu.jpg"
+              alt="macbook"
+              width="auto"
+              height="80px"
+          /></a>
+        </li>
+      </ul>
+      <!-- Фонова музика -->
+      <audio id="bg-music" controls loop>
+        <source src="./media/topmuzon.mp3" type="audio/mpeg" />
+        Ваш браузер не підтримує аудіо елемент.
+      </audio>
+
+      <!-- Відео-блок -->
+      <div class="video-container">
+        <video controls poster="./media/ipad-menu.png">
+          <source
+            src="./media/Огляд MacBook Air 15 дюймів (M2) 2023 - НЕ БЕРИ 8_256 ГБ (огляд українською) - SKAYUA (360p, h264).mp4"
+            type="video/mp4"
+          />
+          Ваш браузер не підтримує відео тег.
+        </video>
+        <a href="https://www.youtube.com/watch?v=pl3dpboC4i0&ab_channel=SKAYUA"
+          >Усі права захищені
+          https://www.youtube.com/watch?v=pl3dpboC4i0&ab_channel=SKAYUA</a
+        >
+      </div>
+
+      <!-- <script>
+        // Автопрогравання музики з обмеженнями
+        document.addEventListener("DOMContentLoaded", function () {
+          const audio = document.getElementById("bg-music");
+          audio.play().catch((error) => {
+            console.log(
+              "Автовідтворення заблоковано, потрібна взаємодія користувача"
+            );
+          });
+        });
+      </script> -->
+      <h2 class="quiz-header">
+        Тест: Наскільки добре ви знаєте техніку Apple?
+      </h2>
+
+      <form id="quizForm">
+        <div class="question">
+          <p>1. У якому році було представлено перший iPhone?</p>
+          <label><input type="radio" name="q1" value="2007" /> 2007</label
+          ><br />
+          <label><input type="radio" name="q1" value="2005" /> 2005</label
+          ><br />
+          <label><input type="radio" name="q1" value="2009" /> 2009</label>
+        </div>
+
+        <div class="question">
+          <p>2. Яка операційна система встановлена на Mac?</p>
+          <label><input type="radio" name="q2" value="macOS" /> macOS</label
+          ><br />
+          <label><input type="radio" name="q2" value="iOS" /> iOS</label><br />
+          <label
+            ><input type="radio" name="q2" value="watchOS" /> watchOS</label
+          >
+        </div>
+
+        <div class="question">
+          <p>3. Що таке AirDrop?</p>
+          <label
+            ><input type="radio" name="q3" value="Функція передачі файлів" />
+            Функція передачі файлів</label
+          ><br />
+          <label
+            ><input type="radio" name="q3" value="Годинник" /> Годинник</label
+          ><br />
+          <label
+            ><input type="radio" name="q3" value="Клавіатура" />
+            Клавіатура</label
+          >
+        </div>
+
+        <div class="question">
+          <p>4. Який порт був замінений на USB-C у MacBook?</p>
+          <label><input type="radio" name="q4" value="MagSafe" /> MagSafe</label
+          ><br />
+          <label><input type="radio" name="q4" value="HDMI" /> HDMI</label
+          ><br />
+          <label><input type="radio" name="q4" value="RJ-45" /> RJ-45</label>
+        </div>
+
+        <div class="question">
+          <p>5. Що таке Face ID?</p>
+          <label
+            ><input type="radio" name="q5" value="Сканер обличчя" /> Сканер
+            обличчя</label
+          ><br />
+          <label
+            ><input type="radio" name="q5" value="Функція дзвінків" /> Функція
+            дзвінків</label
+          ><br />
+          <label
+            ><input type="radio" name="q5" value="Додаток для камери" /> Додаток
+            для камери</label
+          >
+        </div>
+
+        <button type="button" onclick="checkAnswers()">
+          Перевірити відповіді
+        </button>
+      </form>
+
+      <div id="result"></div>
+
+      <script>
+        function checkAnswers() {
+          const correctAnswers = {
+            q1: "2007",
+            q2: "macOS",
+            q3: "Функція передачі файлів",
+            q4: "MagSafe",
+            q5: "Сканер обличчя",
+          };
+
+          let score = 0;
+          for (let q in correctAnswers) {
+            const answer = document.querySelector(`input[name="${q}"]:checked`);
+            if (answer && answer.value === correctAnswers[q]) {
+              score++;
+            }
+          }
+
+          document.getElementById(
+            "result"
+          ).innerHTML = `<h3>Ваш результат: ${score} з 5</h3>`;
+        }
+      </script>
+    </main>
+    <footer class="footer">
+      <ul class="footer-menu">
+        <li>
+          <a href="./Iphone.html"
+            ><img
+              class="footer-img"
+              src="./media/iphone-menu.png"
+              alt="Iphone"
+              width="auto"
+              height="30px"
+          /></a>
+        </li>
+        <li>
+          <a href="./MacBook.html"
+            ><img
+              class="footer-img"
+              src="./media/mac-menu.png"
+              alt="macbook"
+              width="auto"
+              height="30px"
+          /></a>
+        </li>
+        <li>
+          <a href="./Ipad.html"
+            ><img
+              class="footer-img"
+              src="./media/ipad-menu.png"
+              alt="macbook"
+              width="auto"
+              height="30px"
+          /></a>
+        </li>
+        <li>
+          <a href="./IMac.html"
+            ><img
+              class="footer-img"
+              src="./media/iMac-menu.jpg"
+              alt="macbook"
+              width="auto"
+              height="30px"
+          /></a>
+        </li>
+      </ul>
+      <div class="contact-us">
+        <a href="tel:+79161234567" class="contact-link">
+          We will be glad to answer your call
+        </a>
+
+        <a href="mailto:info@company.com" class="contact-link">
+          Mail us and We will consult you the best way
+        </a>
+      </div>
+    </footer>
+  </body>
+</html>
