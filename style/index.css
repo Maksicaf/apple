@@ -147,8 +147,9 @@ video {
 
 #quizForm {
   max-width: 800px;
-  margin: 30px auto;
+  margin: 30px auto 0px auto;
   padding: 30px;
+  padding-bottom: 0px;
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
   border-radius: 15px;
@@ -218,7 +219,8 @@ button[type="button"]:hover {
   text-align: center;
   color: #fff;
   padding: 20px;
-  margin-top: 20px;
+  padding-top: 0px;
+  margin-bottom: 100px;
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.7);
   animation: fadeIn 0.5s ease;
