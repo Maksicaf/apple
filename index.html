@@ -40,68 +40,71 @@
       </div>
     </header>
     <main>
-      <ul class="menu">
-        <li>
-          <a href="./Iphone.html"
-            ><img
-              class="menu-img"
-              src="./media/iphone-menu.png"
-              alt="Iphone"
-              width="auto"
-              height="80px"
-          /></a>
-        </li>
-        <li>
-          <a href="./MacBook.html"
-            ><img
-              class="menu-img"
-              src="./media/mac-menu.png"
-              alt="macbook"
-              width="auto"
-              height="80px"
-          /></a>
-        </li>
-        <li>
-          <a href="./Ipad.html"
-            ><img
-              class="menu-img"
-              src="./media/ipad-menu.png"
-              alt="macbook"
-              width="auto"
-              height="80px"
-          /></a>
-        </li>
-        <li>
-          <a href="./IMac.html"
-            ><img
-              class="menu-img"
-              src="./media/iMac-menu.jpg"
-              alt="macbook"
-              width="auto"
-              height="80px"
-          /></a>
-        </li>
-      </ul>
+      <div class="menu-video-container">
+        <ul class="menu">
+          <li>
+            <a href="./Iphone.html"
+              ><img
+                class="menu-img"
+                src="./media/iphone-menu.png"
+                alt="Iphone"
+                width="auto"
+                height="80px"
+            /></a>
+          </li>
+          <li>
+            <a href="./MacBook.html"
+              ><img
+                class="menu-img"
+                src="./media/mac-menu.png"
+                alt="macbook"
+                width="auto"
+                height="80px"
+            /></a>
+          </li>
+          <li>
+            <a href="./Ipad.html"
+              ><img
+                class="menu-img"
+                src="./media/ipad-menu.png"
+                alt="macbook"
+                width="auto"
+                height="80px"
+            /></a>
+          </li>
+          <li>
+            <a href="./IMac.html"
+              ><img
+                class="menu-img"
+                src="./media/iMac-menu.jpg"
+                alt="macbook"
+                width="auto"
+                height="80px"
+            /></a>
+          </li>
+        </ul>
+
+        <!-- Відео-блок -->
+        <div class="video-container">
+          <video controls poster="./media/ipad-menu.png">
+            <source
+              src="./media/Огляд MacBook Air 15 дюймів (M2) 2023 - НЕ БЕРИ 8_256 ГБ (огляд українською) - SKAYUA (360p, h264).mp4"
+              type="video/mp4"
+            />
+            Ваш браузер не підтримує відео тег.
+          </video>
+          <a
+            href="https://www.youtube.com/watch?v=pl3dpboC4i0&ab_channel=SKAYUA"
+            >Усі права захищені
+            https://www.youtube.com/watch?v=pl3dpboC4i0&ab_channel=SKAYUA</a
+          >
+        </div>
+      </div>
       <!-- Фонова музика -->
       <audio id="bg-music" controls loop>
         <source src="./media/topmuzon.mp3" type="audio/mpeg" />
         Ваш браузер не підтримує аудіо елемент.
       </audio>
-
-      <!-- Відео-блок -->
-      <div class="video-container">
-        <video controls poster="./media/ipad-menu.png">
-          <source
-            src="./media/Огляд MacBook Air 15 дюймів (M2) 2023 - НЕ БЕРИ 8_256 ГБ (огляд українською) - SKAYUA (360p, h264).mp4"
-            type="video/mp4"
-          />
-          Ваш браузер не підтримує відео тег.
-        </video>
-        <a href="https://www.youtube.com/watch?v=pl3dpboC4i0&ab_channel=SKAYUA"
-          >Усі права захищені
-          https://www.youtube.com/watch?v=pl3dpboC4i0&ab_channel=SKAYUA</a
-        >
-      </div>
 
       <!-- <script>
         // Автопрогравання музики з обмеженнями
@@ -185,28 +188,173 @@
 
       <div id="result"></div>
 
-      <script>
-        function checkAnswers() {
-          const correctAnswers = {
-            q1: "2007",
-            q2: "macOS",
-            q3: "Функція передачі файлів",
-            q4: "MagSafe",
-            q5: "Сканер обличчя",
-          };
+      <script type="module">
+        import {
+          calculateResults,
+          collectUserAnswers,
+          quizConfig,
+        } from "./js/gpn.js";
 
-          let score = 0;
-          for (let q in correctAnswers) {
-            const answer = document.querySelector(`input[name="${q}"]:checked`);
-            if (answer && answer.value === correctAnswers[q]) {
-              score++;
-            }
+        window.checkAnswers = function () {
+          const userAnswers = collectUserAnswers();
+
+          // Перевірка кількості відповідей
+          if (Object.keys(userAnswers).length !== quizConfig.maxQuestions) {
+            alert("Будь ласка, дайте відповіді на всі питання!");
+            return;
           }
 
-          document.getElementById(
-            "result"
-          ).innerHTML = `<h3>Ваш результат: ${score} з 5</h3>`;
-        }
+          const results = calculateResults(userAnswers);
+
+          const resultHTML = `
+            <h3>Ваш результат: ${results.totalCorrect} з ${
+            quizConfig.maxQuestions
+          }</h3>
+            <p>Процент правильних відповідей: ${results.percentage.toFixed(
+              1
+            )}%</p>
+            <p>Статус: ${results.passed ? "✅ Успішно" : "❌ Не пройдено"}</p>
+            <p>Рівень знань: ${results.expertLevel}</p>
+          `;
+
+          document.getElementById("result").innerHTML = resultHTML;
+        };
+      </script>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          // Функция для показа стилизованного модального окна
+          function showCustomPrompt(message, example) {
+            return new Promise((resolve) => {
+              const modal = document.createElement("div");
+              modal.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0,0,0,0.9);
+                padding: 2rem;
+                border-radius: 10px;
+                color: white;
+                text-align: center;
+                z-index: 1000;
+              `;
+
+              const text = document.createElement("p");
+              text.textContent = `${message}\nНаприклад - ${example}`;
+
+              const input = document.createElement("input");
+              input.style.cssText = `
+                margin: 1rem 0;
+                padding: 0.5rem;
+                width: 200px;
+                background: rgba(255,255,255,0.1);
+                color: white;
+                border: 1px solid #8b6aff;
+                border-radius: 5px;
+              `;
+
+              const buttonContainer = document.createElement("div");
+              buttonContainer.style.marginTop = "1rem";
+
+              const okBtn = document.createElement("button");
+              okBtn.textContent = "OK";
+              okBtn.onclick = () => {
+                document.body.removeChild(modal);
+                resolve(input.value || null);
+              };
+
+              const cancelBtn = document.createElement("button");
+              cancelBtn.textContent = "Скасувати";
+              cancelBtn.onclick = () => {
+                document.body.removeChild(modal);
+                resolve(null);
+              };
+
+              // Стилизация кнопок
+              [okBtn, cancelBtn].forEach((btn) => {
+                btn.style.cssText = `
+                  margin: 0 0.5rem;
+                  padding: 0.5rem 1rem;
+                  background: linear-gradient(90deg, #ff6b6b, #8b6aff);
+                  border: none;
+                  border-radius: 5px;
+                  color: white;
+                  cursor: pointer;
+                  transition: transform 0.3s ease;
+                `;
+                btn.addEventListener(
+                  "mouseover",
+                  () => (btn.style.transform = "scale(1.05)")
+                );
+                btn.addEventListener(
+                  "mouseout",
+                  () => (btn.style.transform = "scale(1)")
+                );
+              });
+
+              modal.appendChild(text);
+              modal.appendChild(input);
+              buttonContainer.appendChild(okBtn);
+              buttonContainer.appendChild(cancelBtn);
+              modal.appendChild(buttonContainer);
+              document.body.appendChild(modal);
+              input.focus();
+            });
+          }
+
+          // Последовательность опроса
+          (async () => {
+            const firstName = await showCustomPrompt(
+              "Введіть своє ім'я",
+              "Іван"
+            );
+            if (!firstName) return showResult("Дія була відмінена", "error");
+
+            const lastName = await showCustomPrompt(
+              "Введіть своє прізвище",
+              "Іванченко"
+            );
+            if (!lastName) return showResult("Дія була відмінена", "error");
+
+            const patronymic = await showCustomPrompt(
+              "Як Вас по батькові?",
+              "Іванович"
+            );
+            if (!patronymic) return showResult("Дія була відмінена", "error");
+
+            showResult(
+              `Привіт ${lastName} ${firstName} ${patronymic}! Радий тебе бачити!`,
+              "success"
+            );
+          })();
+
+          // Функция для отображения результатов
+          function showResult(message, type) {
+            const resultDiv = document.createElement("div");
+            resultDiv.style.cssText = `
+              position: fixed;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              padding: 2rem;
+              background: ${
+                type === "error" ? "rgba(255,0,0,0.9)" : "rgba(0,255,0,0.9)"
+              };
+              color: white;
+              border-radius: 10px;
+              z-index: 1000;
+              text-align: center;
+              animation: fadeIn 0.5s ease;
+            `;
+
+            resultDiv.textContent = message;
+            document.body.appendChild(resultDiv);
+
+            setTimeout(() => {
+              document.body.removeChild(resultDiv);
+            }, 3000);
+          }
+        });
       </script>
     </main>
     <footer class="footer">
