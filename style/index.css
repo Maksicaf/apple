@@ -51,10 +51,11 @@ h2 {
 
 .menu {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 20px;
   list-style: none;
   list-style-type: none;
+  align-items: center;
 }
 
 .menu-img {
@@ -255,5 +256,101 @@ button[type="button"]:hover {
 
   button[type="button"] {
     font-size: 1rem;
+  }
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #8b6aff;
+  font-size: 0.95rem;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(139, 106, 255, 0.3);
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: #ff6b6b;
+  box-shadow: 0 0 8px rgba(255, 107, 107, 0.4);
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.error {
+  color: #ff3b30;
+  font-size: 0.85rem;
+  margin-top: 5px;
+  padding-left: 10px;
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+button[type="submit"] {
+  background: linear-gradient(90deg, #ff6b6b, #8b6aff);
+  width: 100%;
+  padding: 15px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  margin-top: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(139, 106, 255, 0.4);
+}
+
+/* Стили для радиокнопок и чекбоксов */
+input[type="radio"],
+input[type="checkbox"] {
+  width: auto;
+  margin-right: 10px;
+  accent-color: #8b6aff;
+}
+
+.form-group.radio-group {
+  display: flex;
+  gap: 20px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .form-container {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  input {
+    padding: 10px;
   }
 }
